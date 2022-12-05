@@ -53,6 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width / 4;
+    double height = MediaQuery.of(context).size.height / 8;
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -101,8 +103,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 ],
                               ),
-                              Text(
-                                  "authored by: ${data[index].commit.author.name}"),
+                              Row(
+                                children: [
+                                  Image.network(
+                                    data[index].authorAvatar.avatarUrl,
+                                    width: width,
+                                    height: height,
+                                    fit: BoxFit.contain,
+                                  ),
+                                  const SizedBox(width: 20),
+                                  Text(
+                                    "authored by: ${data[index].commit.author.name}",
+                                  ),
+                                ],
+                              ),
                               Text(
                                 data[index].gitSha,
                                 style: const TextStyle(fontSize: 5.0),

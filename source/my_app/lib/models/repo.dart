@@ -4,18 +4,21 @@ nested calls since we are working with 3 levels */
 class CommitedModel {
   String gitSha;
   Commit commit;
-  CommitedModel({required this.gitSha, required this.commit});
+  AuthorAvatar authorAvatar;
+  CommitedModel(
+      {required this.gitSha, required this.commit, required this.authorAvatar});
 
   factory CommitedModel.fromJson(Map<String, dynamic> json) {
     return CommitedModel(
-        gitSha: json['sha'], commit: Commit.fromJson(json['commit']));
+        gitSha: json['sha'],
+        commit: Commit.fromJson(json['commit']),
+        authorAvatar: AuthorAvatar.fromJson(json['author']));
   }
 }
 
 /* Commit is our middle level json object,
 */
 class Commit {
-//this will handel nested object
   String message;
   Author author;
   Commit({required this.message, required this.author});
@@ -29,7 +32,6 @@ class Commit {
 /* Author is our most inner level json object,
 */
 class Author {
-//this will handle nested object
   String name;
 
   Author({
@@ -38,5 +40,20 @@ class Author {
 
   factory Author.fromJson(Map<String, dynamic> json) {
     return Author(name: json['name']);
+  }
+}
+
+/* AuthorAvatar is a sibling to Commit,
+ they are on the same json level,
+*/
+class AuthorAvatar {
+  String avatarUrl;
+
+  AuthorAvatar({
+    required this.avatarUrl,
+  });
+
+  factory AuthorAvatar.fromJson(Map<String, dynamic> json) {
+    return AuthorAvatar(avatarUrl: json['avatar_url']);
   }
 }
