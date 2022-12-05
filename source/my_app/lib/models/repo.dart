@@ -22,7 +22,7 @@ class Commit {
 }
 
 class Author {
-//this will handel nested object
+//this will handle nested object
   String name;
 
   Author({
