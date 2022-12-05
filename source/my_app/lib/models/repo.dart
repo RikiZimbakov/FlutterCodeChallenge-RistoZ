@@ -1,3 +1,6 @@
+/* CommitedModel is our top level json object,
+for this call we will need to create
+nested calls since we are working with 3 levels */
 class CommitedModel {
   String gitSha;
   Commit commit;
@@ -9,6 +12,8 @@ class CommitedModel {
   }
 }
 
+/* Commit is our middle level json object,
+*/
 class Commit {
 //this will handel nested object
   String message;
@@ -21,6 +26,8 @@ class Commit {
   }
 }
 
+/* Author is our most inner level json object,
+*/
 class Author {
 //this will handle nested object
   String name;

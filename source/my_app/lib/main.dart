@@ -121,6 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+/* IndepthCommit:
+2nd screen that gets navigated to on click*/
 class IndepthCommit extends StatelessWidget {
   const IndepthCommit({super.key, required this.message});
 
